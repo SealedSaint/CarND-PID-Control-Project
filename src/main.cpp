@@ -38,8 +38,12 @@ int main() {
   PID pid;
 
   // TODO: Twiddle to find good coefficients?
-	// best: 1.0, 0.001, 0.01
-	pid.Init(0.5, 0.01, 0.03);
+	// pid.Init(0.5, 0.01, 0.03);
+	// pid.Init(0.5, 0.05, 0.1);
+	// pid.Init(1.0, 0.1, 0.1);
+	// pid.Init(0.01, 0.001, 0.01);
+	pid.Init(0.07, 0.0001, 0.007); // Works at 0.5 throttle
+	// pid.Init(0.07, 0.00003, 0.004);
 
   h.onMessage([&pid, &last_time](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -76,9 +80,6 @@ int main() {
           std::cout << "CTE: " << cte << "; Steering Value: " << steer_value << std::endl;
 
 					double throttle = 0.5;
-					// if(speed > 15) throttle = 0.2;
-					// else if(speed > 20) throttle = 0.1;
-					// else if(speed > 25) throttle = 0.0;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
