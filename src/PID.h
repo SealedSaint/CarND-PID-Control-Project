@@ -14,6 +14,9 @@ public:
   double Ki;
   double Kd;
 
+	double cte;
+	double total_error;
+
   PID();
   virtual ~PID();
 
