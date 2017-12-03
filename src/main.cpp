@@ -37,13 +37,13 @@ int main() {
 
   PID pid;
 
-  // TODO: Twiddle to find good coefficients?
-	// pid.Init(0.5, 0.01, 0.03);
-	// pid.Init(0.5, 0.05, 0.1);
-	// pid.Init(1.0, 0.1, 0.1);
+	// P, I, D
 	// pid.Init(0.01, 0.001, 0.01);
-	pid.Init(0.07, 0.0001, 0.007); // Works at 0.5 throttle
+	// pid.Init(0.07, 0.0001, 0.007); // Works at 0.5 throttle ()
 	// pid.Init(0.07, 0.00003, 0.004);
+	// P, D, I
+	// pid.Init(0.12, 0.005, 0.0005); // Works at 0.5 throttle ()
+	pid.Init(0.12, 0.005, 0.0005);
 
   h.onMessage([&pid, &last_time](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
